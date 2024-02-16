@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 const SingleWorkOut = () => {
@@ -27,14 +27,19 @@ const SingleWorkOut = () => {
         navigate(-1);
     };
 
+    // Split description into an array of items based on newline character
+    const descriptionItems = workOut.description.split('\n').map((item, index) => (
+        <li key={index} className="text-black">{item}</li>
+    ));
+
     return (
-        <div className="px-3">
-            <p className="text-decoration-none" onClick={navigateBack}> &larr; Back</p>
-            <h1 className="text-center p-2">{workOut.title}</h1>
-            <div>
-                <img src={workOut.imageUrl} alt={workOut.title} style={{ width: '100%', maxHeight: '300px', objectFit: 'cover' }} />
+        <div className="px-3 bg-white bg-opacity-75 rounded p-4">
+            <p className="text-decoration-none text-black" onClick={navigateBack}> &larr; Back</p>
+            <h1 className="text-center p-2 text-black">{workOut.title}</h1>
+            <div className="mb-3">
+                <img src={workOut.imageUrl} alt={workOut.title} style={{ width: '400px', maxHeight: '200px', objectFit: 'cover' }} />
             </div>
-            <p className="mt-3">{workOut.description}</p>
+            <ul>{descriptionItems}</ul>
         </div>
     );
 };

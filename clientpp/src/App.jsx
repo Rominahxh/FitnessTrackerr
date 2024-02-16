@@ -1,4 +1,5 @@
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RegistrationForm from './components/RegistrationForm'
 import Login from './components/LogIn'
@@ -11,6 +12,7 @@ import Exercises from './components/Exercises'
 import SingleWorkOut from './components/SingleWorkOut'
 import WelcomePage from './components/WelcomePage';
 import EditWorkOuts from './components/EditWorkOuts';
+import Profile from './components/Profile';
 import { AuthProvider, useAuth } from './AuthContext';
 
 function App() {
@@ -21,7 +23,6 @@ function App() {
       <Routes>
       {token ? (
         <>
-        <Route path="/registration" element={<RegistrationForm user={user}/>}></Route>
         <Route path="/" element={<MainPage user={user}/>}></Route>
         <Route path="/createworkout" element={<CreateWorkOut user={user}/>}></Route>
         <Route path="/BMI" element={<BMI user={user}/>}></Route>
@@ -30,11 +31,13 @@ function App() {
         <Route path="/workout" element={<WorkOut user={user}/>}></Route>
         <Route path="/singleworkout/:id" element={<SingleWorkOut user={user}/>}></Route>
         <Route path="/editworkout/:id" element={<EditWorkOuts user={user}/>}></Route>
+        <Route path="/profile" element={<Profile user={user}/>}></Route>
         </>
         ) : (
           <>         
           <Route path='*' element={<WelcomePage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<RegistrationForm user={user}/>}></Route>
           </>
         )}
       </Routes>

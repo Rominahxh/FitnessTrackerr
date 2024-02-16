@@ -2,7 +2,7 @@ const VideoController = require('../controllers/video.controller');
 const { authenticate } = require('../config/jwt.config');
 
 module.exports = (app) => {
-    app.get('/api/video',authenticate,  VideoController.getAllVideos);
-    app.post('/api/video',authenticate, VideoController.createVideo);  
-    app.delete('/api/video/:id', authenticate, VideoController.deleteVideo);
+    app.get('/api/v1/videos',authenticate,  VideoController.getAllVideos);
+    app.post('/api/v1/videos',authenticate, VideoController.createVideo);  
+    app.delete('/api/v1/videos/:id', authenticate, VideoController.deleteVideo);
 }

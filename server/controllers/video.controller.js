@@ -11,6 +11,7 @@ const getAllVideos = (req, res) => {
         });
 };
 
+
 const createVideo = (req, res) => {
     Video.create(req.body)
         .then(newlyCreatedVideo => {

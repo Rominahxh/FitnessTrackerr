@@ -8,7 +8,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("https://cdn.mos.cms.futurecdn.net/kBvVHemzucYHdHoPcehpCN-1200-80.jpg"); /* Replace with the path to your image */
+  background-image: url("https://t3.ftcdn.net/jpg/01/19/59/74/360_F_119597487_SnvLBdheEGOxu05rMQ5tCzo250cRrTz9.jpg"); /* Replace with the path to your image */
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -23,4 +23,17 @@ body {
   background: rgba(0, 0, 0, 0.5); /* Adjust the alpha (fourth) value for transparency */
   padding: 20px;
   border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.small-font {
+  font-size: xx-small;
+}
+
+.white {
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
 }

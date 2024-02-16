@@ -7,7 +7,7 @@ const CreateWorkOut = (props) => {
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [imageUrl, setImageUrl] = useState(""); // Changed for image URL
+    const [imageUrl, setImageUrl] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     
     const userId = localStorage.getItem('userId') || null;
@@ -23,7 +23,7 @@ const CreateWorkOut = (props) => {
     const createWorkOut = (e) => {
         e.preventDefault();
 
-        if (title.length < 10 || description.length < 1 || !userId) {
+        if (title.length < 3 || description.length < 1 || !userId) {
             setErrorMessage('Your form has some unsolved issues!');
             console.log('Error Message Triggered');
         } else {
@@ -32,7 +32,7 @@ const CreateWorkOut = (props) => {
                     title,
                     description,
                     userId,
-                    imageUrl, // Updated for image URL
+                    imageUrl,
                 },
                 {
                     withCredentials: true
@@ -52,18 +52,17 @@ const CreateWorkOut = (props) => {
     };
 
     return (
-        <div className="px-3">
-            <p className="text-decoration-none" onClick={navigateBack}> &larr; </p>
-            <h1 className="text-center p-2">Create WorkOut</h1>
+        <div className="px-3 bg-white bg-opacity-75 rounded p-4">
+            <p className="text-decoration-none text-black" onClick={navigateBack}> &larr; </p>
+            <h1 className="text-center p-2 text-black">Create WorkOut</h1>
             {
                 errorMessage ?
-                    <p className="text-danger text-center">{errorMessage}</p> :
+                    <p className="text-danger text-center text-black">{errorMessage}</p> :
                     null
             }
 
             <form className="w-75 m-auto" onSubmit={(e) => createWorkOut(e)}>
-                <div>
-                    <label className="form-label">Title: </label>
+                <div className="mb-3">
                     <input
                         className="form-control"
                         type="text"
@@ -71,38 +70,34 @@ const CreateWorkOut = (props) => {
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Enter the title"
                     />
+                    {title.length > 0 && title.length < 3 ?
+                        <p className="text-danger text-black">The title should be 3 characters or more</p> :
+                        null
+                    }
                 </div>
-                {title.length > 0 && title.length < 3 ?
-                    <p className="text-danger">The title should be 3 characters or more</p> :
-                    null
-                }
 
-                <div>
-                    <label className="form-label">Description: </label>
+                <div className="mb-3">
                     <textarea
-                        className="form-control"
+                        className="form-control h-100"
                         type="text"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         placeholder="Enter the description"
                     />
                 </div>
-                {description.length < 1 ?
-                    <p className="text-danger">The description is required</p> :
-                    null
-                }
 
-                <div>
-                    <label className="form-label">Image URL: </label>
+                <div className="mb-3">
+                    <label className="form-label text-black">Image URL: </label>
                     <input
                         type="text"
                         value={imageUrl}
                         onChange={handleImageUrlChange}
                         placeholder="Enter the image URL"
+                        className="form-control"
                     />
                 </div>
 
-                <button className="btn btn-outline-primary customColor mt-2">Create</button>
+                <button className="btn btn-dark customColor mt-2">Create</button>
             </form>
         </div>
     );

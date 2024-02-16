@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Video = new mongoose.Schema({
     title: { 
         type: String,
-        required: [true, 'The title is required']
+        // required: [true, 'The title is required']
     },
     videoUrl: {
         type: String,  
@@ -12,7 +12,7 @@ const Video = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        // required: true,
     },
 }, { timestamps: true });
 

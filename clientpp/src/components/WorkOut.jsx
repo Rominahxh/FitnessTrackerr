@@ -54,13 +54,46 @@ const WorkOut = (props) => {
             });
     };
 
+    const containerStyle = {
+        backgroundColor: 'rgba(255, 255, 255, 0.05)', // White with 80% transparency
+        color: 'white',
+    };
+
+    const buttonStyle = {
+        fontSize: '16px',
+        padding: '8px 12px',
+        margin: '5px',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        background: 'black', // Bootstrap btn-dark color
+        color: 'gray', // Bootstrap btn-dark text color
+        border: '1px solid #343a40', // Bootstrap btn-dark border color
+        textDecoration: 'none',
+    };
+
+    const headerStyle = {
+        fontSize: '40px',
+        fontWeight: 'bold',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+        color: 'white',
+    };
+
+    const navStyle = {
+        background: 'rgba(255, 255, 255, 0.05)', // Transparent black background
+        padding: '20px', // Adjust padding as needed
+    };
+
     return (
-        <div>
-            <nav className="d-flex justify-content-end">
-                <h1>WorkOuts</h1>
-                <Link className=" btn btn-outline-primary customColor" to={'/'}>Home</Link>
-                <Link className=" btn btn-outline-primary customColor" to={'/createworkout'}>Make your own!</Link>
-                <button onClick={handleLogout}>Logout</button>
+        <div style={containerStyle}>
+            <nav className="d-flex justify-content-between" style={navStyle}>
+                <div>
+                    <Link className="btn customButton" to={'/createworkout'} style={buttonStyle}>Make your own!</Link>
+                </div>
+                <h1 style={headerStyle}>WorkOut Routine</h1>
+                <div>
+                    <Link className="btn customButton" to={'/'} style={buttonStyle}>Home</Link>
+                    <button onClick={handleLogout} style={buttonStyle}>Logout</button>
+                </div>
             </nav>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {workOuts.map((workOut, index) => (
@@ -68,18 +101,17 @@ const WorkOut = (props) => {
                         <h2>{workOut.title}</h2>
                         <img src={workOut.imageUrl} alt={workOut.title} style={{ width: '250px', height: '150px' }} />
                         <div>
-                            <button onClick={() => handleDeleteWorkOut(workOut._id)}>Delete</button>
+                            <Link className="card-title" to={`/singleworkout/${workOut._id}`} style={buttonStyle}>View</Link>
+                            
                             {
-                                userId == workOut.userId ?
-                                <Link className="card-title" to={`/editworkout/${workOut._id}`}>Edit</Link>
-                                :
-                                null
+                                userId === workOut.userId ?
+                                    <Link className="card-title" to={`/editworkout/${workOut._id}`} style={buttonStyle}>Edit</Link>
+                                    : null
                             }
                             {
-                                userId == workOut.userId ?
-                                <Link className="card-title" to={`/singleworkout/${workOut._id}`}>View</Link>
-                                :
-                                null
+                                userId === workOut.userId ?
+                                <button onClick={() => handleDeleteWorkOut(workOut._id)} style={buttonStyle}>Delete</button>
+                                    : null
                             }
                         </div>
                     </div>
@@ -90,3 +122,4 @@ const WorkOut = (props) => {
 };
 
 export default WorkOut;
+

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const WorkOut = new mongoose.Schema({
     title: { 
         type: String,
-        minLength: [10, 'The question should be more then 10 characters'],
+        minLength: [3, 'The question should be more then 3 characters'],
         required: [true, 'The title is required']
     },
     description: { 

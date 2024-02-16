@@ -42,7 +42,7 @@ const EditWorkOuts = () => {
     const updateWorkOut = (e) => {
         e.preventDefault();
 
-        if (workOut.title.length < 10 || workOut.description.length < 1 || !userId) {
+        if (workOut.title.length < 3 || workOut.description.length < 1 || !userId) {
             setErrorMessage('Your form has some unsolved issues!');
             console.log('Error Message Triggered');
         } else {
@@ -64,14 +64,14 @@ const EditWorkOuts = () => {
     };
 
     return (
-        <div className="px-3">
-            <p className="text-decoration-none" onClick={navigateBack}> &larr; </p>
-            <h1 className="text-center p-2">Edit WorkOut</h1>
-            {errorMessage && <p className="text-danger text-center">{errorMessage}</p>}
+        <div className="px-3 bg-white bg-opacity-75 rounded p-4">
+            <p className="text-decoration-none text-black" onClick={navigateBack}> &larr; </p>
+            <h1 className="text-center p-2 text-black">Edit WorkOut</h1>
+            {errorMessage && <p className="text-danger text-center text-black">{errorMessage}</p>}
 
             <form className="w-75 m-auto" onSubmit={(e) => updateWorkOut(e)}>
-                <div>
-                    <label className="form-label">Title: </label>
+                <div className="mb-3">
+                    <label className="form-label text-black">Title: </label>
                     <input
                         className="form-control"
                         type="text"
@@ -81,18 +81,18 @@ const EditWorkOuts = () => {
                         placeholder="Enter the title"
                     />
                 </div>
-                <div>
-                    <label className="form-label">Description: </label>
+                <div className="mb-3">
+                    <label className="form-label text-black">Description: </label>
                     <textarea
-                        className="form-control"
+                        className="form-control h-100"
                         name="description"
                         value={workOut.description}
                         onChange={handleInputChange}
                         placeholder="Enter the description"
                     />
                 </div>
-                <div>
-                    <label className="form-label">Image URL: </label>
+                <div className="mb-3">
+                    <label className="form-label text-black">Image URL: </label>
                     <input
                         className="form-control"
                         type="text"
@@ -102,7 +102,7 @@ const EditWorkOuts = () => {
                         placeholder="Enter the image URL"
                     />
                 </div>
-                <button className="btn btn-outline-primary customColor mt-2">Update</button>
+                <button className="btn btn-dark customColor mt-2">Update</button>
             </form>
         </div>
     );
