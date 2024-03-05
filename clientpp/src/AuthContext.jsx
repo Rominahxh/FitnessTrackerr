@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (user) => {
     try {
       const response = await axios.post('http://localhost:8001/api/register', {
-       user
+      user
       },{
         withCredentials: true,
       });

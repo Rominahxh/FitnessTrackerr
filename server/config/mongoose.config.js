@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-
+console.log("mongo ")
 mongoose
-    .connect("mongodb://localhost/fitnessTracker", {
+    .connect("mongodb://127.0.0.1:27017/fitnessTracker", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
